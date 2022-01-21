@@ -9,6 +9,23 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 1d39fc58ffeb6b04eadf17d8941dcf8c
   - enabled: 1
+<<<<<<< Updated upstream
     path: Assets/Scenes/Map.unity
     guid: 0e64fb24a9319c046b5c43f9121c4442
+=======
+    path: Assets/Scenes/Level1.unity
+    guid: 0e64fb24a9319c046b5c43f9121c4442
+  - enabled: 1
+    path: Assets/Scenes/DeadScreen.unity
+    guid: d4384bed649bcc84ba0e5e178550afee
+  - enabled: 1
+    path: Assets/Scenes/LevelComplete.unity
+    guid: cd6d8ed45a710ea449893a5cbe452541
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: e0c2b9f1efb79b14d8512e767b544605
+  - enabled: 1
+    path: Assets/Scenes/GameFinishScreen.unity
+    guid: 32e9d7781bc3bb24b819569910707a62
+>>>>>>> Stashed changes
   m_configObjects: {}
