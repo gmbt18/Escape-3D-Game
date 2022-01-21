@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{4D8D6104-992A-5F36-C9EC-BA45C2673035}</ProjectGuid>
+    <ProjectGuid>{CBB1ED99-40E2-7BC2-1681-A0106F556BF1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -54,8 +54,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Trial 2\Ball.cs" />
-    <Compile Include="Assets\Trial 1\Bird.cs" />
     <Compile Include="Assets\Trial 3\Bean.cs" />
+    <Compile Include="Assets\Trial 1\Bird.cs" />
+    <Compile Include="Assets\MainMenu.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

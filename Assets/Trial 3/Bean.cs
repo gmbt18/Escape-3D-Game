@@ -7,17 +7,14 @@ public class Bean : MonoBehaviour
     [SerializeField] Vector3 jumpHeight;
     [SerializeField] float moveSpeed;
     [SerializeField] float dashBoost;
-    //[SerializeField] float cameraSensitivity;
-    [SerializeField] private Transform plungeCheckTransform = null;
+    [SerializeField] private Transform groundCheck;
 
     private Rigidbody rigidBodyComponent;
     [SerializeField] private float movementForwardBackward;
     [SerializeField] private float movementLeftRight;
-    //[SerializeField] private float cameraMovementUpDown;
-    //[SerializeField] private float cameraMovementLeftRight;
 
     private bool pressedJump;
-    private bool pressedDash;
+    private bool hasJump;
 
     // Start is called before the first frame update
     void Start()
@@ -35,17 +32,23 @@ public class Bean : MonoBehaviour
         }
         movementForwardBackward = Input.GetAxis("Vertical");
         movementLeftRight = Input.GetAxis("Horizontal");
-        //cameraMovementLeftRight = Input.GetAxis("Mouse X");
     }
 
     private void FixedUpdate()
     {
-        if (pressedJump)
+        rigidBodyComponent.velocity = new Vector3(movementLeftRight * moveSpeed, rigidBodyComponent.velocity.y, movementForwardBackward * moveSpeed);
+
+        if (pressedJump && hasJump)
         {
             rigidBodyComponent.AddForce(jumpHeight, ForceMode.VelocityChange);
             pressedJump = false;
+            hasJump = false;
         }
-        rigidBodyComponent.velocity = new Vector3(movementLeftRight * moveSpeed, rigidBodyComponent.velocity.y, movementForwardBackward * moveSpeed);
-        //transform.eulerAngles += new Vector3(0,cameraMovementLeftRight * cameraSensitivity,0);
+
+        if (Physics.OverlapSphere(groundCheck.position, 0.1f).Length > 1)
+        {
+            hasJump = true;
+            return;
+        }
     }
 }
