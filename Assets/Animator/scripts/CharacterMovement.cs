@@ -12,9 +12,13 @@ public class CharacterMovement : MonoBehaviour
     
     Vector2 currentMovementInput;
     Vector3 currentMovement;
+    Vector3 playerVelocity;
     bool isMovementPressed;
-    bool isJumpPressed;
+    bool isJumpPressed = false;
+    bool grounded;
     float rotationFactorPerFrame = 15.0f;
+    float jumpH = 10.0f;
+    float grav = -9.81f;
     float speed;
 
     void Awake()
@@ -53,6 +57,7 @@ public class CharacterMovement : MonoBehaviour
     void onJump (InputAction.CallbackContext context)
     {
         isJumpPressed = context.ReadValueAsButton();
+
     }
 
     void onMovementInput(InputAction.CallbackContext context)
@@ -63,9 +68,25 @@ public class CharacterMovement : MonoBehaviour
         isMovementPressed = currentMovementInput.x != 0 || currentMovementInput.y != 0;
     }
 
+    void MovementJump(){
+        grounded = characterController.isGrounded;
+
+        if(grounded){
+            playerVelocity.y=0.0f;
+        }
+
+        if(isJumpPressed && grounded){
+            playerVelocity.y += Mathf.Sqrt(jumpH * -1.0f * grav);
+            isJumpPressed = false;
+        }
+        playerVelocity.y += grav * Time.deltaTime;
+        characterController.Move(playerVelocity * Time.deltaTime);
+    }
+
     void handleAnimation()
     {
         bool isRunning = animator.GetBool("isRunning");
+        bool isJumping = animator.GetBool("isJumping");
 
         if (isMovementPressed && !isRunning)
         {
@@ -75,6 +96,15 @@ public class CharacterMovement : MonoBehaviour
         {
             animator.SetBool("isRunning", false);
         }
+
+        if (isJumpPressed && !isJumping)
+        {
+            animator.SetBool("isJumping", true);
+        }
+        else if(!isJumpPressed && isJumping && !grounded)
+        {
+            animator.SetBool("isJumping", false);
+        }
     }
 
     // Update is called once per frame
@@ -82,6 +112,7 @@ public class CharacterMovement : MonoBehaviour
     {
         handleRotation();
         handleAnimation();
+        MovementJump();
         characterController.Move(currentMovement * Time.deltaTime);
     }
 
