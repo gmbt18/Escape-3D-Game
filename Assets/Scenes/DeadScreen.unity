@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 218239549}
   - component: {fileID: 218239548}
   m_Layer: 5
-  m_Name: QuitButton
+  m_Name: MainMenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -258,7 +258,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 108090669}
         m_TargetAssemblyTypeName: RetryMenu, Assembly-CSharp
-        m_MethodName: QuitGame
+        m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -867,7 +867,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Quit
+  m_Text: 'Back to Main Menu
 
 '
 --- !u!222 &905497605

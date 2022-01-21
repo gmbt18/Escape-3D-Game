@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
-    private bool hasKey;
+    private bool hasKey = false;
 
     private void OnCollisionEnter(Collision collision) {
         if (collision.transform.tag != "Untagged") {
@@ -14,6 +14,22 @@ public class CollisionHandler : MonoBehaviour
 
         if (collision.transform.tag == "Spike") {
             SceneManager.LoadScene("DeadScreen");
+        }
+
+        if (collision.transform.tag == "Gate") {
+            Debug.Log(hasKey);
+            
+            if (hasKey){
+                SceneManager.LoadScene("LevelComplete");
+            }
+        }
+
+        if (collision.transform.tag == "FinalGate") {
+            Debug.Log(hasKey);
+            
+            if (hasKey){
+                SceneManager.LoadScene("GameFinishScreen");
+            }
         }
     }
 

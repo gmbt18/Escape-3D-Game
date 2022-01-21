@@ -10,9 +10,8 @@ public class RetryMenu : MonoBehaviour
         SceneManager.LoadScene("Level1");
     }
 
-    public void QuitGame ()
+    public void MainMenu ()
     {
-        Debug.Log("QUIT!");
-        Application.Quit();
+        SceneManager.LoadScene("Menu");
     }
 }
